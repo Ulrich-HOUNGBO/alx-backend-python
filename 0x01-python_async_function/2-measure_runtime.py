@@ -3,7 +3,7 @@
 
 import asyncio
 import random
-from time import perf_counter
+import time
 
 wait_n = __import__('1-concurrent_coroutines').wait_n
 
@@ -12,8 +12,8 @@ def measure_time(n: int, max_delay: int) -> float:
     """Wait for a random delay between 0 and max_delay seconds and
     then return that number using the asyncio module
     """
-    start_time = perf_counter()
+    start_time = time.time()
     asyncio.run(wait_n(n, max_delay))
-    end_time = perf_counter()
+    end_time = time.time()
     total_time = end_time - start_time
     return total_time / n
